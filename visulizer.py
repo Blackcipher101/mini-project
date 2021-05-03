@@ -36,3 +36,35 @@ if x == 1:
             cv2.imshow("image",img)
             cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+else:
+    while True:
+        img = cv2.rectangle(img,(510,(512//2)-10),(470,(512//2)+10),(0,255,0),1)
+        font = cv2.FONT_HERSHEY_SIMPLEX
+        cv2.putText(img,'Front',(410,(512//2)+50), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.putText(img,'Back',(410,(512//2)-50), font, 1,(255,255,255),2,cv2.LINE_AA)
+        cv2.imshow("image",img)
+        cv2.waitKey(0)
+        while True:
+            print("1)push\n2)pop")
+            y=input()
+            if y==1:
+                i=i+1
+                img = cv2.rectangle(img,(arr[i],(512//2)-10),(arr[i]-40,(512//2)+10),(0,255,0),1)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                cv2.putText(img,'Back',(arr[i-1]-100,(512//2)-50), font, 1,(0,0,0),2,cv2.LINE_AA)
+                img = cv2.arrowedLine(img, (arr[i],(512//2)), (arr[i]+70,(512//2)),(0,255,0),1)
+                cv2.putText(img,'Back',(arr[i]-100,(512//2)-50), font, 1,(255,255,255),2,cv2.LINE_AA)
+                print("test")
+            if y==2:
+                i=i-1
+                img = cv2.rectangle(img,(arr[i+1],(512//2)-10),(arr[i+1]-40,(512//2)+10),(0,0,0),1)
+                font = cv2.FONT_HERSHEY_SIMPLEX
+                cv2.putText(img,'Back',(arr[i+1]-100,(512//2)-50), font, 1,(0,0,0),2,cv2.LINE_AA)
+                img = cv2.arrowedLine(img, (arr[i+1],(512//2)), (arr[i+1]+70,(512//2)),(0,0,0),1)
+                cv2.putText(img,'Back',(arr[i]-100,(512//2)-50), font, 1,(255,255,255),2,cv2.LINE_AA)
+            """img = cv2.line(img,(0,0),(511,511),(255,0,0),5)
+            img = cv2.rectangle(img,(384,0),(510,128),(0,255,0),3)"""
+            cv2.imshow("image",img)
+            cv2.waitKey(0)
+        cv2.destroyAllWindows()
